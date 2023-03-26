@@ -48,6 +48,8 @@ import android.view.animation.Interpolator;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+import java.time.Duration;
+
 /**
  * This class performs the graphical effect used at the edges of scrollable widgets
  * when the user scrolls beyond the content bounds in 2D space.
@@ -222,6 +224,7 @@ public class EdgeEffect {
     private float mBaseGlowScale;
     private float mDisplacement = 0.5f;
     private float mTargetDisplacement = 0.5f;
+    private Duration hapticDuration = Duration.ofMillis(3);
     private boolean callerHasVibratePermission;
     private Vibrator vibrator;
 
@@ -282,8 +285,10 @@ public class EdgeEffect {
             return;
         }
         AsyncTask.execute(
-                    () -> vibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK)));
-
+                    () -> vibrator.vibrate(VibrationEffect.createOneShot(
+                hapticDuration.toMillis(),
+                VibrationEffect.EFFECT_TEXTURE_TICK)));
+        
     }
 
     /**

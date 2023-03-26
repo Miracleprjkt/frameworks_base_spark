@@ -666,7 +666,7 @@ open class QSTileViewImpl @JvmOverloads constructor(
     private fun getBackgroundColorForState(state: Int, disabledByPolicy: Boolean = false): Int {
         return when {
             state == Tile.STATE_UNAVAILABLE || disabledByPolicy -> colorUnavailable
-            state == Tile.STATE_ACTIVE -> if(qsPanelStyle == 3 || qsPanelStyle == 11) 
+            state == Tile.STATE_ACTIVE -> if(qsPanelStyle == 3) 
                     colorActiveAlpha 
                 else if(qsPanelStyle == 4) 
                     colorActiveRandom 
@@ -683,7 +683,7 @@ open class QSTileViewImpl @JvmOverloads constructor(
         return when {
             state == Tile.STATE_UNAVAILABLE || disabledByPolicy -> colorLabelUnavailable
             state == Tile.STATE_ACTIVE ->
-                if(qsPanelStyle == 2 || qsPanelStyle ==3 || qsPanelStyle == 11)
+                if(qsPanelStyle == 2 || qsPanelStyle ==3)
                     colorActive
                 else if(qsPanelStyle == 4) 
                     colorLabelActiveRandom
@@ -702,7 +702,7 @@ open class QSTileViewImpl @JvmOverloads constructor(
         return when {
             state == Tile.STATE_UNAVAILABLE || disabledByPolicy -> colorSecondaryLabelUnavailable
             state == Tile.STATE_ACTIVE ->
-               if(qsPanelStyle == 2 || qsPanelStyle == 3 || qsPanelStyle == 11) 
+               if(qsPanelStyle == 2 || qsPanelStyle == 3) 
                     colorActive
                 else if(qsPanelStyle == 4) 
                     colorSecondaryLabelActiveRandom
